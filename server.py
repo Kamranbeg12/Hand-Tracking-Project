@@ -20,13 +20,21 @@ def capturing():
     if hands:
         hand = hands[0]
         lmlist = hand['lmList']
-        print(lmlist)
+        i=0
         for lm in lmlist:
             data.extend([lm[0], height-lm[1], lm[2]])
+           
+            print("Landmark: "+str(i), lm)
+            i+=1
+            if i>20:
+                i=0
+                
+
+
         print(data)
         socket_server.sendto(str.encode(str(data)), Socketaddressandport)
 
-    cv2.imshow("Image", img)
+    cv2.imshow("Trackview", img)
     cv2.waitKey(1)
 
  
